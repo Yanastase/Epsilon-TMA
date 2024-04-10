@@ -17,44 +17,30 @@ const Login = () => {
   const handleLogin = () => {
     doSignInWithEmailAndPassword(email, password)
   }
-  // if (email && password) {
-  //   try {
-  //       if (password !== confirmPassword) {
-  //           throw new Error("Passwords do not match");
-  //       }
-  //       await doCreateUserWithEmailAndPassword(email, password);
-  //       console.log("log")
-  //       navigate('/');
-  //   } catch (error) {
-  //       setErrorMessage(error.message);
-  //       setIsRegistering(false);
-  //   }
-  // }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-gray-200">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+      <div className="max-w-md w-full space-y-6 bg-gray-200 text-center rounded-xl p-8">
+        <h2 className="text-3xl font-extrabold text-gray-900">
           Sign in to your account
         </h2>
         <div>
-          <label> mail</label>
-          <input
+          <input placeholder="Email" className="block w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>
-          <label> Password</label>
-          <input
+          <input placeholder="Password" className="block w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"  
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button onClick={handleLogin}>Clique</button>
+        <button onClick={handleLogin} className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Log in</button>
 
-        <p className="text-center text-sm">
+        <p>
           Don't have an account?{" "}
           <Link
             to="/register"
