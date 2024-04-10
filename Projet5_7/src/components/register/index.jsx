@@ -4,7 +4,6 @@ import { doCreateUserWithEmailAndPassword } from "../../firebase/auth";
 import { useAuth } from '../../contexts/authContext';
 
 const Register = () => {
-    const { userLoggedIn } = useAuth();
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -22,7 +21,8 @@ const Register = () => {
                     throw new Error("Passwords do not match");
                 }
                 await doCreateUserWithEmailAndPassword(email, password);
-                navigate('/home');
+                console.log("log")
+                navigate('/');
             } catch (error) {
                 setErrorMessage(error.message);
                 setIsRegistering(false);
@@ -32,7 +32,6 @@ const Register = () => {
 
     return (
         <div>
-            {userLoggedIn && <Navigate to='/home' replace={true} />}
             <div>
                 <h2>Register</h2>
                 <form onSubmit={onSubmit}>
@@ -60,7 +59,7 @@ const Register = () => {
                     <button type="submit">Register</button>
                 </form>
                 {errorMessage && <p>{errorMessage}</p>}
-                <p>Already have an account? <Link to="/login">Login here</Link></p>
+                <p>Already have an account? <Link to="/">Login here</Link></p>
             </div>
         </div>
     );
